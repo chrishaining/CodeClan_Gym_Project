@@ -10,7 +10,7 @@ last_name varchar(255) not null,
 
 CREATE TABLE fitness_classes;
 id serial8 primary key,
-fitness_class_name varchar(255) not null,
+name varchar(255) not null,
 );
 
 CREATE TABLE bookings;
