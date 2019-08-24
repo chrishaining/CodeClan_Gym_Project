@@ -48,22 +48,36 @@ class Member
   # end
 
   #define a function to view a specific member/set of members (the READ of CRUD). This is version A
-def self.view_member_by_id(id)
-  sql = "
-  SELECT * FROM members
-  WHERE id = $1"
-  values = [id]
-  result = SqlRunner.run(sql, values)[0]
-  return result
-end
+  def self.view_member_by_id(id)
+    sql = "
+    SELECT * FROM members
+    WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values)[0]
+    return result
+  end
 
   #define a function to view a specific member/set of members (the READ of CRUD). This is version B
-def view()
-  sql = "
-  SELECT * FROM members"
-  result = SqlRunner.run(sql)[0]
-  return result
-end
+  def view()
+    sql = "
+    SELECT * FROM members"
+    result = SqlRunner.run(sql)[0]
+    return result
+  end
+
+  #define a function to view all the fitness_classes a member has signed up to. We want to get to the fitness_classes table, which is not directly connected to the members table. So, it requires an inner join on bookings.
+  def booked_fitness_classes
+    sql = "
+    SELECT * from fitness_classes
+    INNER JOIN bookings
+    ON bookings.fitness_class_id = fitness_classes.id
+    WHERE bookings.member_id = $1
+    "
+    values = [@id]
+    fitness_classes_data = SqlRunner.run(sql, values)
+    result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
+    return result
+  end
 
   #define a function to update a member (the UPDATE of CRUD)
   def update()
@@ -92,13 +106,20 @@ end
   end
 
   #define a function to delete a specific member (the DELETE of CRUD). Version B
-def self.delete_member_by_id(id)
-  sql = "
-  DELETE FROM members
-  WHERE id = $1"
-  values = [id]
-  SqlRunner.run(sql, values)
-end
+  def self.delete_member_by_id(id)
+    sql = "
+    DELETE FROM members
+    WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
 
+
+  #The app should allow the gym to add members to specific classes. This function could plausibly be run on a member or a fitness_class. It would depend on whether a user starts with the fitness_class or starts with the member details. It may be possible to have both routes. For the starts-with-member route, we need to call a function on the member, using the fitness_class as the argument. The ids from the member and the fitness_class can be used to create a new instance of the booking class.
+
+  def make_booking(fitness_class)
+    Booking.new('member_id' => @id, 'fitness_class_id' => fitness_class.id).save()
+    update()
+  end
   #final end
 end
