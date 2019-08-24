@@ -12,26 +12,29 @@ member4 = Member.new( {'first_name' => 'Simone', 'last_name' => 'De Cantara' } )
 member5 = Member.new( {'first_name' => 'Jim', 'last_name' => 'Joy' } )
 
 #creating instances of the member class (save method)
-member1.save
-member2.save
-member3.save
-member4.save
-member5.save
+member1.save()
+member2.save()
+member3.save()
+member4.save()
+member5.save()
 
-binding.pry
-nil
+
 
 #instances of the fitnessclass
-# student4 = Student.new({
-#   'first_name' => 'severus',
-#   'last_name' => 'snape',
-#   'house_id' => house4.id,
-#   'age' => 37 })
+fitness_class1 = FitnessClass.new ( { 'name' => 'Pilates' })
+fitness_class2 = FitnessClass.new ( { 'name' => 'Yoga' })
+fitness_class3 = FitnessClass.new ( { 'name' => 'Killer Kardio' })
+
+fitness_class1.save()
+fitness_class2.save()
+fitness_class3.save()
 
 #creating instances of the fitnessclass (save method)
 # student1.save
 
 
+binding.pry
+nil
 #new instances of the booking class
 
 
