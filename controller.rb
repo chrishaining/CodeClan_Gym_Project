@@ -15,42 +15,40 @@ get '/members/new' do
   erb(:new)
 end
 
-# # create
+# # create - this works, but the system allows the user to enter blank fields, which I want to fix.
 post '/members' do
   Member.new(params).save
   redirect to '/members'
 end
 
-
-# # show
+# show all members
 get '/members' do
   @members = Member.view_all
   erb(:members)
 end
 
-
-# get '/students/:id' do
-#   @student = Student.find(params['id'])
+#show a specific member, found by ID - this isn't working. Should I be using a Member.new here?
+# get '/members/:id' do
+#   @member = Member.view_member_by_id(params[:id]) #or is it ['id']?
 #   erb(:show)
 # end
-#
+
 # # edit
-# get '/students/:id/edit' do
-#   @houses = House.all
-#   @student = Student.find(params['id'])
+# get '/members/:id/edit' do
+#   @member = Member.view_member_by_id(params['id'])
 #   erb(:edit)
 # end
 #
 # # update
-# post '/students/:id' do
-#   student = Student.new(params)
-#   student.update
-#   redirect to "/students/#{params['id']}"
+# post '/members/:id' do
+#   member = Member.new(params)
+#   member.update
+#   redirect to "/members/#{params['id']}"
 # end
 #
 # # delete
-# post '/students/:id/delete' do
-#   student = Student.find(params['id'])
-#   student.delete
-#   redirect to '/students'
+# post '/members/:id/delete' do
+#   member = Member.view_member_by_id(params['id'])
+#   member.delete
+#   redirect to '/members'
 # end
