@@ -19,23 +19,39 @@ member4.save()
 member5.save()
 
 
-
 #instances of the fitnessclass
 fitness_class1 = FitnessClass.new ( { 'name' => 'Pilates' })
 fitness_class2 = FitnessClass.new ( { 'name' => 'Yoga' })
 fitness_class3 = FitnessClass.new ( { 'name' => 'Killer Kardio' })
 
+#creating instances of the fitnessclass (save method)
 fitness_class1.save()
 fitness_class2.save()
 fitness_class3.save()
 
-#creating instances of the fitnessclass (save method)
-# student1.save
+
+#new instances of the booking class
+booking1 = Booking.new ( { 'member_id' => member1.id, 'fitness_class_id' => fitness_class1.id})
+
+booking2 = Booking.new ( { 'member_id' => member1.id, 'fitness_class_id' => fitness_class2.id})
+
+booking3 = Booking.new ( { 'member_id' => member2.id, 'fitness_class_id' => fitness_class1.id})
+
+booking4 = Booking.new ( { 'member_id' => member3.id, 'fitness_class_id' => fitness_class1.id})
+
+booking5 = Booking.new ( { 'member_id' => member4.id, 'fitness_class_id' => fitness_class2.id})
+
+booking6 = Booking.new ( { 'member_id' => member5.id, 'fitness_class_id' => fitness_class2.id})
+
+#creating instances of the booking class (save method)
+booking1.save()
+booking2.save()
+booking3.save()
+booking4.save()
+booking5.save()
+booking6.save()
+
 
 
 binding.pry
 nil
-#new instances of the booking class
-
-
-#creating instances of the booking class (save method)
