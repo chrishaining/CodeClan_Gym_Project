@@ -86,6 +86,21 @@ def self.delete_fitness_class_by_id(id)
   SqlRunner.run(sql, values)
 end
 
+#for the MVP: the app should show all members that are registered for a particular class. To do this: access the members table via an inner joint with bookings; this should produce a list of attendees, but I will need to map this.
+def attendees()
+  sql = "SELECT members.*
+  FROM members
+  INNER JOIN bookings
+  ON bookings.member_id = members.id
+  WHERE bookings.fitness_class_id = $1"
+  values = [@id]
+  attendee_data = SqlRunner.run(sql, values)
+  attendees = attendee_data.map { |attendee|  Member.new(attendee) }
+  return attendees
+end
+
+
+
 
 #final end
 end
