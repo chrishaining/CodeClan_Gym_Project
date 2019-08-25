@@ -15,8 +15,8 @@ name varchar(255) not null
 
 CREATE TABLE bookings (
 id serial8 primary key,
-member_id INT8 REFERENCES members(id),
-fitness_class_id INT8 REFERENCES fitness_classes(id) 
+member_id INT8 REFERENCES members(id) ON DELETE CASCADE,
+fitness_class_id INT8 REFERENCES fitness_classes(id) ON DELETE CASCADE
 );
 
 -- DO I NEED TO DELETE ON CASCADE FOR THE FOREIGN KEYS?

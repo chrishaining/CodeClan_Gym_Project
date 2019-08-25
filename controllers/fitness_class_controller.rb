@@ -26,7 +26,7 @@ end
 #   erb(:"fitness_classes")
 # end
 
-#show a specific class, found by ID - this isn't working. Should I be using a Member.new here?
+#show a specific class, found by ID - this isn't working. Should I be using a FitnessClass.new here?
 get '/fitness_classes/:id' do
   @fitness_class = FitnessClass.view_class_by_id(params['id'])
   erb( :"fitness_classes/show")
@@ -45,9 +45,8 @@ end
 #   redirect to "/fitness_classes/#{params['id']}"
 # end
 #
-# delete
-# post '/fitness_classes/:id/delete' do
-#   fitness_class = FitnessClass.view_class_by_id(params['id'])
-#   fitness_class.delete
-#   redirect to '/fitness_classes'
-# end
+# delete - is not working
+post '/fitness_classes/:id/delete' do
+  FitnessClass.delete_fitness_class_by_id(params['id'])
+  redirect to '/fitness_classes/index'
+end

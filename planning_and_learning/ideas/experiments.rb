@@ -7,6 +7,8 @@ WHERE date >= CURDATE
 AND date_and_time >= NOW
 
 
+
+
 #in the fitness_class.rb
 attr_accessor :date_and_time
 
@@ -21,6 +23,17 @@ def show_upcoming_fitness_classes()
   result = upcoming_classes.map { |fitness_class| FitnessClass.new(fitness_class)}
   return result
 end
+
+
+#for views/members/show.erb
+<h2><%= @member.pretty_name %></h2>
+<p>ID: <%= @member.id %></p>
+<p>Last Name: <%= @member.first_name %></p>
+<p>First Name: <%= @member.last_name %></p>
+
+<a href="/members/<%= @member.id %>/edit">Edit Member Details</a>
+<form action="/members/<%= @member.id %>/delete" method="POST"><input type="submit" value="Delete"></form>
+
 
 #for views/fitness_classes/show.erb
 <h2><%= @fitness_class.name %></h2>

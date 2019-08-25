@@ -27,10 +27,10 @@ end
 # end
 
 #show a specific member, found by ID - this isn't working. Should I be using a Member.new here?
-# get '/members/:id' do
-#   # @member = Member.view #_member_by_id(params[:id].to_i) #or is it ['id']?
-#   erb(:"/members/show")
-# end
+get '/members/:id' do
+  @member = Member.view_member_by_id(params['id'])
+  erb( :"/members/show")
+end
 
 # # edit
 # get '/members/:id/edit' do
@@ -46,8 +46,7 @@ end
 # end
 #
 # # delete
-# post '/members/:id/delete' do
-#   member = Member.view_member_by_id(params['id'])
-#   member.delete
-#   redirect to '/members'
-# end
+post '/members/:id/delete' do
+  Member.delete_member_by_id(params['id'])
+  redirect to '/members/index'
+end
