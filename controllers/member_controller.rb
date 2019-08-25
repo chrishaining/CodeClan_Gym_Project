@@ -32,18 +32,20 @@ get '/members/:id' do
   erb( :"/members/show")
 end
 
-# # edit
-# get '/members/:id/edit' do
-#   @member = Member.view_member_by_id(params['id'])
-#   erb(:edit)
-# end
+# edit
+get '/members/:id/edit' do
+  @member = Member.view_member_by_id(params[:id])
+  # erb ( :"/edit")
+  erb( :"/members/edit")
+end
 #
 # # update
-# post '/members/:id' do
-#   member = Member.new(params)
-#   member.update
-#   redirect to "/members/#{params['id']}"
-# end
+post '/members/:id' do
+  member = Member.new(params)
+  member.update
+  redirect to "/members/#{params['id']}"
+  # redirect to "/members/#{params['id']}"
+end
 #
 # # delete
 post '/members/:id/delete' do

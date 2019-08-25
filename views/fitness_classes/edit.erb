@@ -1,0 +1,9 @@
+<form method="post" action="/fitness_classes/<%= @fitness_class['id'] %>">
+
+  <label for="name-field">Name: </label>
+  <input type="text" name="name" id="name-field"
+  value="<%= @fitness_class['name'] %>">
+
+  <input type="submit" value="Submit updated class details">
+
+</form>

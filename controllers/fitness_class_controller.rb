@@ -33,17 +33,17 @@ get '/fitness_classes/:id' do
 end
 
 # # edit
-# get '/fitness_classes/:id/edit' do
-#   @fitness_class = FitnessClass.view_class_by_id(params['id'])
-#   erb(:"fitness_classes/edit")
-# end
+get '/fitness_classes/:id/edit' do
+  @fitness_class = FitnessClass.view_class_by_id(params['id'])
+  erb(:"fitness_classes/edit")
+end
 # #
 # # update
-# post '/fitness_classes/:id' do
-#   class = FitnessClass.new(params)
-#   class.update
-#   redirect to "/fitness_classes/#{params['id']}"
-# end
+post '/fitness_classes/:id' do
+  fitness_class = FitnessClass.new(params)
+  fitness_class.update
+  redirect to "/fitness_classes/#{params['id']}"
+end
 #
 # delete - is not working
 post '/fitness_classes/:id/delete' do
