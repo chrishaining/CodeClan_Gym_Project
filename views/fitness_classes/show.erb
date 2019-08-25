@@ -1,0 +1,5 @@
+<h2><%= @fitness_class.name %></h2>
+<p>Class ID: <%= @fitness_class.id %></p>
+<p>Attendees: <%= @fitness_class.attendees %></p>
+<a href="/fitness_classes/<%= @fitness_class.id %>/edit">Edit Class Details</a>
+<form action="/fitness_classes/<%= @fitness_class.id %>/delete" method="POST"><input type="submit" value="Delete"></form>

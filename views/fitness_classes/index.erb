@@ -1,0 +1,14 @@
+<h2>Classes</h2>
+
+<!-- <div id="member-wrapper"> -->
+  <% @fitness_classes.each do |fitness_class| %>
+  <ul>
+
+    <li>Class <%= fitness_class.id %>: <%= fitness_class.name %>
+    <a href="/fitness_classes/<%= fitness_class.id %>">View details</a></li>
+
+  </ul>
+  <!-- </div> -->
+
+  <% end %>
+<!-- </div> -->

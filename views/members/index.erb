@@ -3,7 +3,8 @@
 <!-- <div id="member-wrapper"> -->
   <% @members.each do |member| %>
   <ul>
-    <li>Member <%= member.id %>: <%= member.pretty_name %></li>
+    <li>Member <%= member.id %>: <%= member.pretty_name %>
+    <a href="/members/<%= member.id %>">View details</a></li>
   </ul>
   <!-- </div> -->
 
