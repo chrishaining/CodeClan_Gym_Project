@@ -21,3 +21,10 @@ def show_upcoming_fitness_classes()
   result = upcoming_classes.map { |fitness_class| FitnessClass.new(fitness_class)}
   return result
 end
+
+#for views/fitness_classes/show.erb
+<h2><%= @fitness_class.name %></h2>
+<p>Class ID: <%= @fitness_class.id %></p>
+<p>Attendees: <%= @fitness_class.attendees %></p>
+<a href="/fitness_classes/<%= @fitness_class.id %>/edit">Edit Class Details</a>
+<form action="/fitness_classes/<%= @fitness_class.id %>/delete" method="POST"><input type="submit" value="Delete"></form>

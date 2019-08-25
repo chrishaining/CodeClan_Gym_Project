@@ -11,7 +11,7 @@ end
 
 # new
 get '/fitness_classes/new' do
-  erb(:"fitness_classes/new")
+  erb( :"fitness_classes/new")
 end
 
 # # create - this works, but the system allows the user to enter blank fields, which I want to fix.
@@ -27,17 +27,17 @@ end
 # end
 
 #show a specific class, found by ID - this isn't working. Should I be using a Member.new here?
-# get '/fitness_classes/:id' do
-#   @fitness_class = FitnessClass.view_class_by_id(params[:id]) #or is it ['id']?
-#   erb(:show)
-# end
+get '/fitness_classes/:id' do
+  @fitness_class = FitnessClass.view_class_by_id(params['id'])
+  erb( :"fitness_classes/show")
+end
 
 # # edit
 # get '/fitness_classes/:id/edit' do
 #   @fitness_class = FitnessClass.view_class_by_id(params['id'])
-#   erb(:edit)
+#   erb(:"fitness_classes/edit")
 # end
-#
+# #
 # # update
 # post '/fitness_classes/:id' do
 #   class = FitnessClass.new(params)
@@ -45,9 +45,9 @@ end
 #   redirect to "/fitness_classes/#{params['id']}"
 # end
 #
-# # delete
+# delete
 # post '/fitness_classes/:id/delete' do
-#   class = FitnessClass.view_class_by_id(params['id'])
-#   class.delete
+#   fitness_class = FitnessClass.view_class_by_id(params['id'])
+#   fitness_class.delete
 #   redirect to '/fitness_classes'
 # end
