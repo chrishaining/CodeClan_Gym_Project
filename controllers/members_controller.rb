@@ -58,17 +58,17 @@ post '/members/:id/delete' do
 end
 
 #book a fitness_class. How to do this? From members?
-get '/members/:id/booking' do
-  @member = Member.view_member_by_id(params['id'])
-  @fitness_classes = FitnessClass.view_all()
-    erb( :"/members/booking")
-end
+# get '/members/:id/booking' do
+#   @member = Member.view_member_by_id(params['id'])
+#   @fitness_classes = FitnessClass.view_all()
+#     erb( :"/members/booking")
+# end
 
-post '/members/:id/booking' do
-  @member = Member.view_member_by_id(params['id'])
-  @fitness_classes = FitnessClass.view_all()
-  @booking = Booking.new( params )
-  @booking.save
-  # @member.make_booking(params['fitness_class'])
-  erb( :"/members/booking")
-end
+# post '/members/:id/booking' do
+#   @member = Member.view_member_by_id(params['id'])
+#   @fitness_classes = FitnessClass.view_all()
+#   @booking = Booking.new( params )
+#   @booking.save
+#   # @member.make_booking(params['fitness_class'])
+#   erb( :"/members/booking")
+# end

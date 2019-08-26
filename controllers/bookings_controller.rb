@@ -13,7 +13,7 @@ get '/bookings/new' do
   erb( :"bookings/new")
 end
 
-# # create.
+# # create
 post '/bookings' do
   # @members = Member.view_all()
   # @fitness_classes = FitnessClass.view_all()

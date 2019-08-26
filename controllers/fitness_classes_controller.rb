@@ -16,8 +16,8 @@ end
 
 # # create - this works, but the system allows the user to enter blank fields, which I want to fix.
 post '/fitness_classes' do
-  FitnessClass.new(params).save
-  redirect to '/fitness_classes'
+  @fitness_class = FitnessClass.new(params).save
+  erb( :"fitness_classes/create")
 end
 #
 # # show all classes - not needed, as the index does this
@@ -29,7 +29,7 @@ end
 #show a specific class, found by ID - this isn't working. Should I be using a FitnessClass.new here?
 get '/fitness_classes/:id' do
   @fitness_class = FitnessClass.view_class_by_id(params['id'])
-  
+  @attendees = @fitness_class.attendees
   erb( :"fitness_classes/show")
 end
 

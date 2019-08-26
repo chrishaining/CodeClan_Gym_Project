@@ -1,7 +1,12 @@
 <h2><%= @fitness_class.name %></h2>
 
 <p>Class ID: <%= @fitness_class.id %></p>
-<p>Class attendees: <%= @fitness_class.attendees %></p>
+<p>Class attendees:
+
+  <% @attendees.each do |attendee| %>
+<%= attendee.pretty_name %>
+<% end %>
+</p>
 
 <a href="/fitness_classes/<%= @fitness_class.id %>/edit">Edit Class Details</a>
 <form action="/fitness_classes/<%= @fitness_class.id %>/delete" method="POST"><input type="submit" value="Delete"></form>
