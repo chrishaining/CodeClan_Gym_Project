@@ -59,5 +59,5 @@ end
 post '/members/:id/booking' do
   @fitness_classes = FitnessClass.view_all()
   # @booking = Member.make_booking(params)
-  erb( :"members/booking")
+  erb( :"/members/booking")
 end

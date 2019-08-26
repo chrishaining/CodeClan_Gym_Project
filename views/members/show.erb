@@ -3,14 +3,13 @@
 <ul>
   <li>Last Name: <%= @member.first_name %></li>
   <li>First Name: <%= @member.last_name %></li>
-  <li>Classed booked:
+  <li>Classes this member has signed up for:
     <% @bookings.each do |booking| %>
-   <%= booking.name %>
-   <% end %> </li>
+    <%= booking.name %>
+    <% end %> </li>
+  </ul>
 
-</ul>
+  <a href="/members/<%= @member.id %>/edit">Edit Member Details</a>
+  <form action="/members/<%= @member.id %>/delete" method="POST"><input type="submit" value="Delete"></form>
 
-<a href="/members/<%= @member.id %>/edit">Edit Member Details</a>
-<form action="/members/<%= @member.id %>/delete" method="POST"><input type="submit" value="Delete"></form>
-
-<a href="/members/<%= @member.id %>/booking">Book a class</a>
+  <a href="/members/<%= @member.id %>/booking">Book a class</a>
