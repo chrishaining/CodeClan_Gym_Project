@@ -29,6 +29,7 @@ end
 #show a specific member, found by ID - this isn't working. Should I be using a Member.new here?
 get '/members/:id' do
   @member = Member.view_member_by_id(params[:id])
+  @bookings = @member.booked_fitness_classes
   erb( :"/members/show")
 end
 
@@ -55,8 +56,8 @@ post '/members/:id/delete' do
 end
 
 #book a fitness_class. How to do this? From members?
-# post '/members/:id/booking' do
-# @fitness_classes = 
-#   @booking = Member.make_booking(params)
-#   erb( :"members/booking")
-# end
+post '/members/:id/booking' do
+  @fitness_classes = FitnessClass.view_all()
+  # @booking = Member.make_booking(params)
+  erb( :"members/booking")
+end

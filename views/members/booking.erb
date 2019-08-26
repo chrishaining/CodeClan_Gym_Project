@@ -1,0 +1,6 @@
+<label for="booking-selection">Book a class:</label>
+<select name="name" id="booking-selection">
+  <% @fitness_classes.each do |fitness_class| %>
+  <option value=<%= fitness_class['id'] %>><%= fitness_class['name'] %></option>
+  <% end %>
+</select>
