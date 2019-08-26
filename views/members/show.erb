@@ -3,11 +3,12 @@
 <ul>
   <li>Last Name: <%= @member.first_name %></li>
   <li>First Name: <%= @member.last_name %></li>
-  <li>Classes this member has signed up for:
+  <li>Classes this member has signed up for:</li>
     <% @bookings.each do |booking| %>
-    <%= booking.name %>
+    <li><%= booking.name %><input type="submit" value="Show booking details"/>
     <% end %> </li>
   </ul>
+  <!-- I don't understand why booking.name is. But it works, as it shows the name of the relevant fitness_class. -->
 
   <a href="/members/<%= @member.id %>/edit">Edit Member Details</a>
   <form action="/members/<%= @member.id %>/delete" method="POST"><input type="submit" value="Delete"></form>

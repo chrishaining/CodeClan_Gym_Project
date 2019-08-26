@@ -99,8 +99,10 @@ def attendees()
   return attendees
 end
 
+#
 
 
+#idea is to have a method that returns all the bookings for a fitness_class. this could be useful when we want to delete a particular booking id. 
 
 #final end
 end

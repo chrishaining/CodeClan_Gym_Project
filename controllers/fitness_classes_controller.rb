@@ -47,7 +47,7 @@ post '/fitness_classes/:id' do
   # redirect to "/fitness_classes/#{params['id']}"
 end
 #
-# delete - is not working
+# delete 
 post '/fitness_classes/:id/delete' do
   FitnessClass.delete_fitness_class_by_id(params['id'])
   redirect to '/fitness_classes/index'
