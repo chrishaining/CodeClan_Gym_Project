@@ -17,7 +17,7 @@ end
 # # create - this works, but the system allows the user to enter blank fields, which I want to fix.
 post '/fitness_classes' do
   FitnessClass.new(params).save
-  redirect to '/fitness_classes/index'
+  redirect to '/fitness_classes'
 end
 #
 # # show all classes - not needed, as the index does this
@@ -42,7 +42,8 @@ end
 post '/fitness_classes/:id' do
   fitness_class = FitnessClass.new(params)
   fitness_class.update
-  redirect to "/fitness_classes/#{params['id']}"
+  erb( :"fitness_classes/update")
+  # redirect to "/fitness_classes/#{params['id']}"
 end
 #
 # delete - is not working

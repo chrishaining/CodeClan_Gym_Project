@@ -39,10 +39,10 @@ def self.view_booking_by_id(id)
   SELECT * FROM bookings
   WHERE id = $1"
   values = [id]
-  result = SqlRunner.run(sql, values)[0]
+  booking_info = SqlRunner.run(sql, values)
+  return Booking.new(booking_info.first)
   return result
 end
-
 
 #define a function to view a specific booking/set of bookings (the READ of CRUD). Version B
 def view()

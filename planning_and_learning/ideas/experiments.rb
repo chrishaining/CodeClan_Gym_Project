@@ -27,9 +27,13 @@ end
 
 #for views/members/show.erb
 <h2><%= @member.pretty_name %></h2>
-<p>ID: <%= @member.id %></p>
-<p>Last Name: <%= @member.first_name %></p>
-<p>First Name: <%= @member.last_name %></p>
+
+<ul>
+  <li>ID: <%= @member.id %></li>
+  <li>Last Name: <%= @member.first_name %></li>
+  <li>First Name: <%= @member.last_name %></li>
+</ul>
+
 
 <a href="/members/<%= @member.id %>/edit">Edit Member Details</a>
 <form action="/members/<%= @member.id %>/delete" method="POST"><input type="submit" value="Delete"></form>

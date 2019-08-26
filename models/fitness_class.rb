@@ -39,8 +39,8 @@ def self.view_class_by_id(id)
   SELECT * FROM fitness_classes
   WHERE id = $1"
   values = [id]
-  result = SqlRunner.run(sql, values)[0]
-  return result
+  class_info = SqlRunner.run(sql, values)
+  return FitnessClass.new(class_info.first)
 end
 
 #define a function to view a specific fitness class/set of fitness classes (the READ of CRUD).Version B
