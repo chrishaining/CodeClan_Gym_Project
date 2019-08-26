@@ -1,6 +1,8 @@
 require('sinatra')
 require('sinatra/contrib/all')
 require_relative('../models/member.rb')
+require_relative('../models/booking.rb')
+
 also_reload('../models/*')
 
 # index
@@ -56,8 +58,17 @@ post '/members/:id/delete' do
 end
 
 #book a fitness_class. How to do this? From members?
-post '/members/:id/booking' do
+get '/members/:id/booking' do
+  @member = Member.view_member_by_id(params['id'])
   @fitness_classes = FitnessClass.view_all()
-  # @booking = Member.make_booking(params)
+    erb( :"/members/booking")
+end
+
+post '/members/:id/booking' do
+  @member = Member.view_member_by_id(params['id'])
+  @fitness_classes = FitnessClass.view_all()
+  @booking = Booking.new( params )
+  @booking.save
+  # @member.make_booking(params['fitness_class'])
   erb( :"/members/booking")
 end

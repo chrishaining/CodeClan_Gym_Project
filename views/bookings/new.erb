@@ -1,0 +1,20 @@
+<h2>Book a class</h2>
+<form method="POST" action="/bookings">
+
+  <label for="select-member">Select member:</label>
+  <select name="member_id" id="select-member">
+    <% @members.each do |member| %>
+    <option value=<%= member.id %>><%= member.pretty_name %></option>
+    <% end %>
+  </select>
+
+  <label for="select-class">Select class:</label>
+  <select name="fitness_class_id" id="select-class">
+    <% @fitness_classes.each do |fitness_class| %>
+    <option value=<%= fitness_class.id %>><%= fitness_class.name %></option>
+    <% end %>
+  </select>
+
+      <input type="submit" value="Confirm booking"/>
+
+</form>

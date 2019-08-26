@@ -29,6 +29,7 @@ end
 #show a specific class, found by ID - this isn't working. Should I be using a FitnessClass.new here?
 get '/fitness_classes/:id' do
   @fitness_class = FitnessClass.view_class_by_id(params['id'])
+  
   erb( :"fitness_classes/show")
 end
 
