@@ -16,7 +16,7 @@ end
 
 # # create - this works, but the system allows the user to enter blank fields, which I want to fix.
 post '/fitness_classes' do
-  @fitness_class = FitnessClass.new(params).save
+  @fitness_class = FitnessClass.new(params[fitness_class]).save
   erb( :"fitness_classes/create")
 end
 #

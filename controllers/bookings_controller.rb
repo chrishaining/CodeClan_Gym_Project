@@ -20,3 +20,10 @@ post '/bookings' do
   @booking = Booking.new(params).save
   erb( :"bookings/create")
 end
+
+#delete
+post '/bookings/:id/delete' do
+  
+  Booking.delete_booking_by_id(params['id'])
+  redirect to '/'
+end

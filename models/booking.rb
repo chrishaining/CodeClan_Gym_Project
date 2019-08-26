@@ -87,6 +87,7 @@ def self.delete_booking_by_id(id)
   SqlRunner.run(sql, values)
 end
 
+#method to delete a booking using the member's ID as the argument. Call it on an instance of the class. Also, there may be a possibility to delete all the bookings a particular member has (e.g. because they are off sick, and it would be easier to delete all their classes together)
 
 #Final end
 end
