@@ -5,11 +5,7 @@
 <ul>
 
   <% @attendees.each do |attendee| %>
-<li><%= attendee.pretty_name %><input type="submit" value="Show booking details"/>
-
-  <%# <a href="/bookings/<%= WHAT WILL I PUT IN HERE? method="POST"><input type="submit" value="Delete"></form> %>
-
-
+<li><%= attendee.pretty_name %><a href="/members/<%= attendee.id %>">Show member details</a>
   </li>
   </ul>
 <% end   %>
