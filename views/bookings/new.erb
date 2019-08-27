@@ -11,7 +11,7 @@
   <label for="select-class">Select class:</label>
   <select name="fitness_class_id" id="select-class">
     <% @fitness_classes.each do |fitness_class| %>
-    <option value=<%= fitness_class.id %>><%= fitness_class.name %></option>
+    <option value=<%= fitness_class.id %>><%= fitness_class.name %> <%= "  #{fitness_class.format_date} " %><%= "#{fitness_class.format_time}" %></option>
     <% end %>
   </select>
 

@@ -5,8 +5,8 @@ require 'time'
 
 class FitnessClass
 
-attr_accessor :name
-attr_reader :id, :datetime
+attr_accessor :name, :datetime
+attr_reader :id
 
 def initialize(options)
   @id = options['id'].to_i if options['id']
@@ -76,8 +76,8 @@ end
 def update()
   sql ="
   UPDATE fitness_classes
-  SET name = $1, $2
-  WHERE id = $2
+  SET name = $1, datetime = $2
+  WHERE id = $3
   "
   values = [@name, @datetime, @id]
   SqlRunner.run(sql, values)
