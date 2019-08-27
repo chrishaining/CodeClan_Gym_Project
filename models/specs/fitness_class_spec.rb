@@ -5,7 +5,7 @@ require_relative("../fitness_class")
 class FitnessClassTest < Minitest::Test
 
   def setup
-    options = {'id' => 1, 'name' => 'Pilates', 'fitness_class_date' => 25-08-2019, 'fitness_class_time' => '11:00' }
+    options = {'id' => 1, 'name' => 'Pilates', 'datetime' => '2019-08-27 14:00:00' }
     @fitness_class1 = FitnessClass.new(options)
   end
 
@@ -17,9 +17,18 @@ class FitnessClassTest < Minitest::Test
     assert_equal(1, @fitness_class1.id)
   end
 
-  def test_fitness_class_date
-    assert_equal('25-8-2019', @fitness_class1.fitness_class_date)
+  def test_fitness_class_datetime
+    assert_equal('2019-08-27 14:00:00', @fitness_class1.datetime)
   end
+
+  def test_format_date
+    assert_equal('27/08/2019', @fitness_class1.format_date )
+  end
+
+  def test_format_time
+    assert_equal('14:00', @fitness_class1.format_time )
+  end
+
 
   #FINAL END
 end

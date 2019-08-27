@@ -1,14 +1,17 @@
 <h2><%= @fitness_class.name %></h2>
 
 <p>Class ID: <%= @fitness_class.id %></p>
+<p>Date: <%= @fitness_class.format_date %></p>
+<p>Time: <%= @fitness_class.format_time %></p>
+
+
 <p>Class attendees:
-<ul>
-
-  <% @attendees.each do |attendee| %>
-<li><%= attendee.pretty_name %><a href="/members/<%= attendee.id %>">Show member details</a>
-  </li>
+  <ul>
+    <% @attendees.each do |attendee| %>
+    <li><%= attendee.pretty_name %><a href="/members/<%= attendee.id %>">Show member details</a>
+    </li>
   </ul>
-<% end   %>
+  <% end   %>
 
 
-<!-- my problem is that @fitness_class isn't being recognised in the way I hoped. It means that the methods .id, .name and .attendees don't work. I can access name and id using [''], but not attendees. See the experiment.rb for the original code. -->
+  <!-- my problem is that @fitness_class isn't being recognised in the way I hoped. It means that the methods .id, .name and .attendees don't work. I can access name and id using [''], but not attendees. See the experiment.rb for the original code. -->

@@ -1,27 +1,46 @@
 require_relative('../db/sql_runner')
+require 'date'
+require 'time'
+
 
 class FitnessClass
 
 attr_accessor :name
-attr_reader :id, :fitness_class_date, :fitness_class_time
+attr_reader :id, :datetime
 
 def initialize(options)
   @id = options['id'].to_i if options['id']
   @name = options['name']
-  @fitness_class_date = options['fitness_class_date'].strftime(26-08-2019, %d, %m, %Y)
-  @fitness_class_time = options['fitness_class_time'].strftime('12:00')
+  @datetime = options['datetime']
+
+# datetime_obj = DateTime.parse(@datetime)
+#
+# datetime_obj.strftime('%m/%d/%Y')
+
 end
+
+
+def format_date
+  datetime_obj = DateTime.parse(@datetime)
+  datetime_obj.strftime('%d/%m/%Y')
+end
+
+def format_time
+  datetime_obj = DateTime.parse(@datetime)
+  datetime_obj.strftime('%H:%M')
+end
+
 
 #define a function to create a new fitness class (the CREATE of CRUD)
 def save()
   sql = "
   INSERT INTO fitness_classes
-  (name)
+  (name, datetime)
   VALUES
-  ($1)
+  ($1, $2)
   RETURNING *
   "
-  values = [@name]
+  values = [@name, @datetime]
   fitness_class = SqlRunner.run(sql, values).first
   @id = fitness_class['id'].to_i
 end
@@ -57,10 +76,10 @@ end
 def update()
   sql ="
   UPDATE fitness_classes
-  SET name = $1
+  SET name = $1, $2
   WHERE id = $2
   "
-  values = [@name, @id]
+  values = [@name, @datetime, @id]
   SqlRunner.run(sql, values)
 end
 

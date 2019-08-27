@@ -1,10 +1,22 @@
 <h2>Add a fitness class</h2>
+
 <form method="POST" action="/fitness_classes">
 
-      <label for="name">Name:</label>
-      <input type="text" name="name" id="name"/>
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name"/>
 
-    <div class="form-el">
-      <input type="submit" value="Create new class"/>
+<!-- if we have separate labels for date and time, how do we tell the app to put these into datetime? -->
+  <!-- <label for="date">Date:</label>
+  <input type="date" name="date" id="date"/>
 
-</form>
+  <label for="time">Time:</label>
+  <input type="time" name="time" id="time"/> -->
+
+  <label for="datetime">Date and Time:</label>
+  <input type="datetime-local" name="datetime" id="datetime"/>
+
+
+  <div class="form-el">
+    <input type="submit" value="Create new class"/>
+
+  </form>
