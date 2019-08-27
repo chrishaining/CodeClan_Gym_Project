@@ -21,9 +21,16 @@ post '/bookings' do
   erb( :"bookings/create")
 end
 
+#show a specific booking
+get '/bookings/:id' do
+  @booking = Booking.view_booking_by_id(params[:id])
+  @member= @booking.view_member()
+  erb( :"/bookings/show")
+end
+
+
 #delete
 post '/bookings/:id/delete' do
-  
   Booking.delete_booking_by_id(params['id'])
-  redirect to '/'
+  redirect to '/members/:id'
 end

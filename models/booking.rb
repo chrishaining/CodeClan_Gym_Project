@@ -52,6 +52,24 @@ def view()
   return result
 end
 
+#show the name of the member who holds the specific booking. the READ of CRUD). At the moment, it seems to return an array, which could be a problem
+def view_member()
+ sql = "
+    SELECT * FROM members
+    where members.id = $1
+ "
+ values = [@member_id]
+ member = SqlRunner.run(sql, values)
+ result = Member.new(member.first)
+ # result = member.map { |member| Member.new(member).pretty_name}
+ return result
+end
+
+#show the name of the fitness_class for the specific booking. the READ of CRUD)
+# def show_fitness_class_name()
+#
+# end
+
 #define a function to update a booking (the UPDATE of CRUD)
 def update()
   sql ="

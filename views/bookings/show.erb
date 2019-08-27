@@ -1,0 +1,18 @@
+<h2><%= @booking.id %></h2>
+
+<ul>
+  <li>Member: <%= @member %></li>
+  <li>Class: NOT CODED YET</li>
+</ul>
+
+<p>Are you sure you want to delete?
+
+  <a href="/members/<%= @member.id %>/show">No. return to the member details</a>
+
+  <form action="/bookings/<%= @booking.id %>/delete" method="POST"><input type="submit" value="I'm sure. Delete this booking"/></form>
+
+</p>
+  <!-- I don't understand why booking.name is. But it works, as it shows the name of the relevant fitness_class. -->
+
+
+<!--  -->
