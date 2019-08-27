@@ -13,5 +13,8 @@
   </ul>
   <% end   %>
 
+  <a href="/fitness_classes/<%= @fitness_class.id %>/edit">Edit Class Details</a>
+  <form action="/fitness_classes/<%= @fitness_class.id %>/delete" method="POST"><input type="submit" value="Delete this class"></form>
+
 
   <!-- my problem is that @fitness_class isn't being recognised in the way I hoped. It means that the methods .id, .name and .attendees don't work. I can access name and id using [''], but not attendees. See the experiment.rb for the original code. -->

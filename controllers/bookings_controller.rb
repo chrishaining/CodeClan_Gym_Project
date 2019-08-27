@@ -17,14 +17,22 @@ end
 post '/bookings' do
   # @members = Member.view_all()
   # @fitness_classes = FitnessClass.view_all()
-  @booking = Booking.new(params).save
-  erb( :"bookings/create")
+  # return if FitnessClass.new.attendee_member_ids.include?(@member_id)
+  # return if params[:member_id] params[:fitness_class_id]
+
+  if Booking.already_booked?(params[:member_id], params[:fitness_class_id])
+    erb( :"bookings/already_booked")
+  else
+    @booking = Booking.new(params).save
+    erb( :"bookings/create")
+  end
 end
 
 #show a specific booking
 get '/bookings/:id' do
   @booking = Booking.view_booking_by_id(params[:id])
-  @member= @booking.view_member()
+  @member = @booking.view_member()
+  @fitness_class = @booking.view_fitness_class()
   erb( :"/bookings/show")
 end
 

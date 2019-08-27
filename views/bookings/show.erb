@@ -2,10 +2,11 @@
 
 <ul>
   <li>Member: <%= @member.pretty_name %></li>
-  <li>Class: NOT CODED YET</li>
+  <li>Class: <%= @fitness_class.name %></li>
+  <li>Class: <%= @fitness_class.format_date %></li>
+  <li>Class: <%= @fitness_class.format_time %></li>
+
 </ul>
-
-
 
   <a href="/members/<%= @member.id %>">Return to the member details</a>
 

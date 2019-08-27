@@ -13,6 +13,8 @@ end
 
 #define a function to create a new booking (the CREATE of CRUD)
 def save()
+
+  # return if .include?(@member_id)
   sql = "
   INSERT INTO bookings
   (member_id, fitness_class_id)
@@ -24,6 +26,23 @@ def save()
   booking = SqlRunner.run(sql, values).first
   @id = booking['id'].to_i
 end
+
+# def attendees()
+#   sql = "SELECT members.*
+#   FROM members
+#   INNER JOIN bookings
+#   ON bookings.member_id = members.id
+#   WHERE bookings.fitness_class_id = $1"
+#   values = [@id]
+#   attendee_data = SqlRunner.run(sql, values)
+#   attendees = attendee_data.map { |attendee| Member.new(attendee) }
+#   return attendees
+# end
+
+
+
+# method to stop a person booking into the same fitness_class multiple times. first, we want to check whether that person (id) is in attendees. if yes, return. so, it should go in the booking class (save method). return if @member_id is in fitness_class.attendees
+
 
 #define a function to view all bookings (the READ of CRUD)
 def self.view_all()
@@ -64,6 +83,20 @@ def view_member()
  # result = member.map { |member| Member.new(member).pretty_name}
  return result
 end
+
+def view_fitness_class()
+ sql = "
+    SELECT * FROM fitness_classes
+    where fitness_classes.id = $1
+ "
+ values = [@fitness_class_id]
+ fitness_class = SqlRunner.run(sql, values)
+ result = FitnessClass.new(fitness_class.first)
+ # result = member.map { |member| Member.new(member).pretty_name}
+ return result
+end
+
+
 
 #show the name of the fitness_class for the specific booking. the READ of CRUD)
 # def show_fitness_class_name()
@@ -114,7 +147,16 @@ end
 #   SqlRunner.run(sql, values)
 # end
 
-
+def self.already_booked?(member_id, fitness_class_id)
+  sql = "
+  SELECT * FROM bookings
+  WHERE member_id = $1 AND fitness_class_id = $2
+  "
+  values = [member_id, fitness_class_id]
+  no_booking = SqlRunner.run(sql, values).first.nil?
+  return !no_booking
+end
+# self.search_member_id_and_fitness_class_id
 
 #Final end
 end

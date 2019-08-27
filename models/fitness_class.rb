@@ -116,11 +116,21 @@ def attendees()
   WHERE bookings.fitness_class_id = $1"
   values = [@id]
   attendee_data = SqlRunner.run(sql, values)
-  attendees = attendee_data.map { |attendee|  Member.new(attendee) }
+  attendees = attendee_data.map { |attendee| Member.new(attendee) }
   return attendees
 end
 
-#
+def attendee_member_ids()
+  sql = "SELECT members.*
+  FROM members
+  INNER JOIN bookings
+  ON bookings.member_id = members.id
+  WHERE bookings.fitness_class_id = $1"
+  values = [@id]
+  attendee_data = SqlRunner.run(sql, values)
+  attendees = attendee_data.map { |attendee| Member.new(attendee).id }
+  return attendees
+end
 
 
 #idea is to have a method that returns all the bookings for a fitness_class. this could be useful when we want to delete a particular booking id.
