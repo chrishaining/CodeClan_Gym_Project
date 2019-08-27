@@ -21,5 +21,7 @@ class BookingTest < Minitest::Test
     assert_equal(3, @booking1.fitness_class_id)
   end
 
+
+
   #FINAL END
 end

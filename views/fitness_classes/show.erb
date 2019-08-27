@@ -5,15 +5,26 @@
 <p>Time: <%= @fitness_class.format_time %></p>
 
 
-<p>Class attendees:
-  <ul>
-    <% @attendees.each do |attendee| %>
-    <li><%= attendee.pretty_name %><a href="/members/<%= attendee.id %>">Show member details</a>
-    </li>
-  </ul>
-  <% end   %>
+<p>Class attendees: </p>
 
-  <a href="/fitness_classes/<%= @fitness_class.id %>/edit">Edit Class Details</a>
+  <table>
+    <% @attendees.each do |attendee| %>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><%= attendee.pretty_name %></td>
+<td><a href="/members/<%= attendee.id %>">  Show member details</a></td>
+        </tr>
+        <% end %>
+      </table>
+
+  <hr>
+
+<form action="/fitness_classes/<%= @fitness_class.id %>/edit" method="GET"><input type="submit" value="Edit Class Details"></form>
+
+  <br>
   <form action="/fitness_classes/<%= @fitness_class.id %>/delete" method="POST"><input type="submit" value="Delete this class"></form>
 
 
