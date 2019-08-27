@@ -53,6 +53,15 @@ def self.view_all()
   return result
 end
 
+#to view only upcoming classes (it only works to date level - if something has happened today, it still shows)
+def self.view_upcoming_classes()
+  sql = "SELECT * FROM fitness_classes
+  WHERE datetime >= CURRENT_DATE"
+  fitness_classes_data = SqlRunner.run(sql)
+  result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
+  return result
+end
+
 
 #define a function to view a specific fitness class/set of fitness classes (the READ of CRUD).Version A
 def self.view_class_by_id(id)

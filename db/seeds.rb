@@ -24,12 +24,16 @@ fitness_class1 = FitnessClass.new ( { 'name' => 'Pilates', 'datetime' => '2019-0
 fitness_class2 = FitnessClass.new ( { 'name' => 'Yoga', 'datetime' => '2019-08-28 18:00:00' })
 fitness_class3 = FitnessClass.new ( { 'name' => 'Killer Kardio', 'datetime' => '2019-08-29 14:00:00' })
 fitness_class4 = FitnessClass.new ( { 'name' => 'Codercise', 'datetime' => '2019-08-29 17:00:00' })
+fitness_class5 = FitnessClass.new ( { 'name' => 'Powerpump', 'datetime' => '2019-08-28 08:00:00' })
+fitness_class6 = FitnessClass.new ( { 'name' => 'Cartwheels', 'datetime' => '2019-05-27 17:00:00' })
 
 #creating instances of the fitnessclass (save method)
 fitness_class1.save()
 fitness_class2.save()
 fitness_class3.save()
 fitness_class4.save()
+fitness_class5.save()
+
 
 
 #new instances of the booking class

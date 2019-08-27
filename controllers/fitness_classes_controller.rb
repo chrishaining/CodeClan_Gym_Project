@@ -5,7 +5,8 @@ also_reload('../models/*')
 
 # index
 get '/fitness_classes/index' do
-  @fitness_classes = FitnessClass.view_all()
+  # @fitness_classes = FitnessClass.view_all()
+  @fitness_classes = FitnessClass.view_upcoming_classes
   erb( :"fitness_classes/index")
 end
 
