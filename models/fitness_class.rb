@@ -3,11 +3,13 @@ require_relative('../db/sql_runner')
 class FitnessClass
 
 attr_accessor :name
-attr_reader :id
+attr_reader :id, :fitness_class_date, :fitness_class_time
 
 def initialize(options)
   @id = options['id'].to_i if options['id']
   @name = options['name']
+  @fitness_class_date = options['fitness_class_date'].strftime(26-08-2019, %d, %m, %Y)
+  @fitness_class_time = options['fitness_class_time'].strftime('12:00')
 end
 
 #define a function to create a new fitness class (the CREATE of CRUD)
@@ -102,7 +104,7 @@ end
 #
 
 
-#idea is to have a method that returns all the bookings for a fitness_class. this could be useful when we want to delete a particular booking id. 
+#idea is to have a method that returns all the bookings for a fitness_class. this could be useful when we want to delete a particular booking id.
 
 #final end
 end
