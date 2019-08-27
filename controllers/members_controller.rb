@@ -19,7 +19,7 @@ end
 # # create - this works, but the system allows the user to enter blank fields, which I want to fix.
 post '/members' do
   Member.new(params).save
-  redirect to '/members'
+  redirect to '/members/index'
 end
 
 # show all members - not needed, as members/index does this

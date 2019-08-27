@@ -8,8 +8,9 @@
 
   <p>Classes this member has signed up for:</p>
     <% @bookings.each do |booking| %>
-    <li><%= booking.name %><form action="/bookings/<%= booking.id %>" method="GET"><input type="submit" value="Show booking details"/></form>
-    <% end %> </li>
+    <li><%= booking.name %></li>
+    <a href="/bookings/<%= booking.id %>">View booking details</a>
+    <% end %>
   </ul>
   <hr>
   <!-- I don't understand why booking.name is. But it works, as it shows the name of the relevant fitness_class. -->

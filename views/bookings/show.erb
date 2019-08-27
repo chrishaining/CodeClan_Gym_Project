@@ -1,17 +1,17 @@
 <h2><%= @booking.id %></h2>
 
 <ul>
-  <li>Member: <%= @member %></li>
+  <li>Member: <%= @member.pretty_name %></li>
   <li>Class: NOT CODED YET</li>
 </ul>
 
-<p>Are you sure you want to delete?
 
-  <a href="/members/<%= @member.id %>/show">No. return to the member details</a>
 
-  <form action="/bookings/<%= @booking.id %>/delete" method="POST"><input type="submit" value="I'm sure. Delete this booking"/></form>
+  <a href="/members/<%= @member.id %>">Return to the member details</a>
 
-</p>
+  <form action="/bookings/<%= @booking.id %>/delete" method="POST"><input type="submit" value="Delete this booking"/></form>
+
+
   <!-- I don't understand why booking.name is. But it works, as it shows the name of the relevant fitness_class. -->
 
 
