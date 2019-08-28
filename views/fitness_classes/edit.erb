@@ -4,6 +4,9 @@
   <input type="text" name="name" id="name-field"
   value="<%= @fitness_class.name %>">
 
+  <label for="datetime">Date and time: </label>
+  <input type="datetime-local" name="datetime" id="datetime"
+  value="<%= @fitness_class.format_date_for_browser %>">
   <input type="submit" value="Submit updated class details">
 
 </form>

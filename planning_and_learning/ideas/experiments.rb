@@ -45,3 +45,19 @@ end
 <p>Attendees: <%= @fitness_class.attendees %></p>
 <a href="/fitness_classes/<%= @fitness_class.id %>/edit">Edit Class Details</a>
 <form action="/fitness_classes/<%= @fitness_class.id %>/delete" method="POST"><input type="submit" value="Delete"></form>
+
+
+#for the 'members/bookings'
+<form method="POST" action="/members/booking">
+
+<label for="booking-selection">Book a class:</label>
+<select name="name" id="booking-selection">
+  <% @fitness_classes.each do |fitness_class| %>
+  <option value=<%= fitness_class.id %>><%= fitness_class.name %></option>
+  <% end %>
+</select>
+
+</form>
+
+#piece of code Sky showed me for using in the bookings form. Not sure how exactly to use this though.
+<input type="hidden" name="member_id" value=<%= @member.id %>>

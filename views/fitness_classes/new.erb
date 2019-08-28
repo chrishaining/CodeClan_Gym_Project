@@ -1,15 +1,18 @@
 <h2>Add a fitness class</h2>
+
 <form method="POST" action="/fitness_classes">
-  <div class="form-wrapper">
 
-    <div class="form-el">
-      <label for="name">Name:</label>
-      <input type="text" name="name" id="name"/>
-    </div>
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name"/>
 
-    <div class="form-el">
-      <input type="submit" value="Create new class"/>
-    </div>
+  <label for="datetime">Date and Time:</label>
+  <input type="datetime-local" name="datetime" id="datetime"/>
 
-  </div>
-</form>
+  <br>
+  <br>
+    <input type="submit" value="Create new class"/>
+
+  </form>
+
+  <hr>
+  <img src="/images/yoga.jpg" alt="One of our classes" height="300" width="500"/>

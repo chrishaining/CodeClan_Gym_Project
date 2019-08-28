@@ -13,7 +13,7 @@ end
 
 #define a function to create a new booking (the CREATE of CRUD)
 def save()
-  sql = "
+    sql = "
   INSERT INTO bookings
   (member_id, fitness_class_id)
   VALUES
@@ -24,6 +24,9 @@ def save()
   booking = SqlRunner.run(sql, values).first
   @id = booking['id'].to_i
 end
+
+# method to stop a person booking into the same fitness_class multiple times. first, we want to check whether that person (id) is in attendees. if yes, return. so, it should go in the booking class (save method). return if @member_id is in fitness_class.attendees
+
 
 #define a function to view all bookings (the READ of CRUD)
 def self.view_all()
@@ -50,6 +53,29 @@ def view()
   SELECT * FROM bookings"
   result = SqlRunner.run(sql)[0]
   return result
+end
+
+#show the name of the member who holds the specific booking. the READ of CRUD). At the moment, it seems to return an array, which could be a problem
+def view_member()
+ sql = "
+    SELECT * FROM members
+    where members.id = $1
+ "
+ values = [@member_id]
+ member = SqlRunner.run(sql, values)
+ result = Member.new(member.first)
+ return result
+end
+
+def view_fitness_class()
+ sql = "
+    SELECT * FROM fitness_classes
+    where fitness_classes.id = $1
+ "
+ values = [@fitness_class_id]
+ fitness_class = SqlRunner.run(sql, values)
+ result = FitnessClass.new(fitness_class.first)
+ return result
 end
 
 #define a function to update a booking (the UPDATE of CRUD)
@@ -87,6 +113,15 @@ def self.delete_booking_by_id(id)
   SqlRunner.run(sql, values)
 end
 
+def self.already_booked?(member_id, fitness_class_id)
+  sql = "
+  SELECT * FROM bookings
+  WHERE member_id = $1 AND fitness_class_id = $2
+  "
+  values = [member_id, fitness_class_id]
+  no_booking = SqlRunner.run(sql, values).first.nil?
+  return !no_booking
+end
 
 #Final end
 end

@@ -1,12 +1,13 @@
 <h2>Members</h2>
 
-<!-- <div id="member-wrapper"> -->
-  <% @members.each do |member| %>
-  <ul>
-    <li>Member <%= member.id %>: <%= member.pretty_name %>
-    <a href="/members/<%= member.id %>">View details</a></li>
-  </ul>
-  <!-- </div> -->
-
+<div class="table-container">
+<table>
+    <% @members.each do |member| %>
+  <tr>
+    <td>Member <%= member.id %></td>
+    <td><%= member.pretty_name %></td>
+    <td><a href="/members/<%= member.id %>">View details</a></td>
+  </tr>
   <% end %>
-<!-- </div> -->
+  </table>
+  </div>

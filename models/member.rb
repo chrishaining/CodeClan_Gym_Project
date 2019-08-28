@@ -34,18 +34,12 @@ class Member
   #define a function to view all members (the READ of CRUD).
 
   def self.view_all()
-    sql = "SELECT * FROM members"
+    sql = "SELECT * FROM members
+    ORDER BY last_name"
     member_data = SqlRunner.run(sql)
     result = member_data.map { |member| Member.new(member) }
     return result
   end
-
-
-  #was going to create a helper method to use to map items
-  # def self.map_items(member_data)
-  #   result = member_data.map { |member| Member.new(member) }
-  #   return result
-  # end
 
   #define a function to view a specific member/set of members (the READ of CRUD). This is version A
   def self.view_member_by_id(id)

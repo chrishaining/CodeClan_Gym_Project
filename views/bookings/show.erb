@@ -1,0 +1,16 @@
+<div>
+<h2>Booking details</h2>
+
+  <p>Booking ID: <%= @booking.id %></p>
+  <p>Member: <%= @member.pretty_name %></p>
+  <p>Class: <%= @fitness_class.name %></p>
+  <p>Date: <%= @fitness_class.format_date %></p>
+  <p>Time: <%= @fitness_class.format_time %></p>
+
+
+</div>
+<div>
+<a href="/members/<%= @member.id %>">Return to the member details</a>
+
+<form action="/bookings/<%= @booking.id %>/delete" method="POST"><input type="submit" value="Delete this booking"/></form>
+</div>
