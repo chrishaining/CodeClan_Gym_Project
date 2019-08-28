@@ -62,12 +62,13 @@ class FitnessClass
   end
 
   #to view only upcoming classes (it only works to date level - if something has happened today, it still shows)
-  def self.view_upcoming_classes()
-    sql = "SELECT * FROM fitness_classes
-    WHERE datetime >= CURRENT_DATE"
-    fitness_classes_data = SqlRunner.run(sql)
-    result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
-    return result
+  # def self.view_upcoming_classes()
+  #   sql = "SELECT * FROM fitness_classes
+  #   WHERE datetime >= CURRENT_DATE"
+  #   fitness_classes_data = SqlRunner.run(sql)
+  #   result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
+  #   return result
+  # end
     # dated_classes = []
     # for fitness_class in result
     #   dated = fitness_class.format_date
@@ -75,7 +76,15 @@ class FitnessClass
     #   # sorted = result.sort_by { |fitness_class| fitness_class.format_date }
     #   return dated_classes.sort
     # end
-  end
+def self.view_upcoming_classes()
+  sql = "SELECT * FROM fitness_classes
+  WHERE datetime >= CURRENT_TIMESTAMP
+  ORDER BY datetime ASC"
+  fitness_classes_data = SqlRunner.run(sql)
+  result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
+  return result
+end
+
 
   #function to sort the fitness_classes by datetime.
   # def sort_fitness_classes_by_datetime()
