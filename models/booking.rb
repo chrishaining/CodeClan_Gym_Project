@@ -13,9 +13,7 @@ end
 
 #define a function to create a new booking (the CREATE of CRUD)
 def save()
-
-  # return if .include?(@member_id)
-  sql = "
+    sql = "
   INSERT INTO bookings
   (member_id, fitness_class_id)
   VALUES
@@ -157,6 +155,20 @@ def self.already_booked?(member_id, fitness_class_id)
   return !no_booking
 end
 # self.search_member_id_and_fitness_class_id
+
+# def self.overbooked?(fitness_class_id)
+#   sql = "
+#   SELECT * FROM fitness_classes
+#   WHERE id = $1
+#   "
+#   values = [fitness_class_id]
+#   SqlRunner.run(sql, values)
+#
+#   # result = FitnessClass.new(fitness_class.first)
+#   # fitness_class.attendees.length >= @capacity ? true : false
+#   # return "Sorry, there are no spaces left in this class." if self.attendees.length => @capacity
+# end
+
 
 #Final end
 end

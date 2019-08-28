@@ -5,13 +5,15 @@ require 'time'
 
 class FitnessClass
 
-  attr_accessor :name, :datetime
+  attr_accessor :name, :datetime, :capacity #, :enrolled
   attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @datetime = options['datetime']
+    @capacity = options['capacity'].to_i
+    # @enrolled = options['enrolled'].to_i
 
     # datetime_obj = DateTime.parse(@datetime)
     #
@@ -35,12 +37,12 @@ class FitnessClass
   def save()
     sql = "
     INSERT INTO fitness_classes
-    (name, datetime)
+    (name, datetime, capacity)
     VALUES
-    ($1, $2)
+    ($1, $2, $3)
     RETURNING *
     "
-    values = [@name, @datetime]
+    values = [@name, @datetime, @capacity]
     fitness_class = SqlRunner.run(sql, values).first
     @id = fitness_class['id'].to_i
   end
@@ -76,88 +78,96 @@ class FitnessClass
   #     future_classes.push(fitness_class) if fitness_class.format_time >= Time.now && fitness_class.format_date >= Date.now
   #   end
 
-# end
+  # end
 
-#define a function to view a specific fitness class/set of fitness classes (the READ of CRUD).Version A
-def self.view_class_by_id(id)
-  sql = "
-  SELECT * FROM fitness_classes
-  WHERE id = $1"
-  values = [id]
-  class_info = SqlRunner.run(sql, values)
-  return FitnessClass.new(class_info.first)
-end
+  #define a function to view a specific fitness class/set of fitness classes (the READ of CRUD).Version A
+  def self.view_class_by_id(id)
+    sql = "
+    SELECT * FROM fitness_classes
+    WHERE id = $1"
+    values = [id]
+    class_info = SqlRunner.run(sql, values)
+    return FitnessClass.new(class_info.first)
+  end
 
-#define a function to view a specific fitness class/set of fitness classes (the READ of CRUD).Version B
-def view()
-  sql = "
-  SELECT * FROM fitness_classes"
-  result = SqlRunner.run(sql)[0]
-  return result
-end
+  #define a function to view a specific fitness class/set of fitness classes (the READ of CRUD).Version B
+  def view()
+    sql = "
+    SELECT * FROM fitness_classes"
+    result = SqlRunner.run(sql)[0]
+    return result
+  end
 
-#define a function to update a fitness class (the UPDATE of CRUD)
-def update()
-  sql ="
-  UPDATE fitness_classes
-  SET name = $1, datetime = $2
-  WHERE id = $3
-  "
-  values = [@name, @datetime, @id]
-  SqlRunner.run(sql, values)
-end
+  #define a function to update a fitness class (the UPDATE of CRUD)
+  def update()
+    sql ="
+    UPDATE fitness_classes
+    SET name = $1, datetime = $2
+    WHERE id = $3
+    "
+    values = [@name, @datetime, @id]
+    SqlRunner.run(sql, values)
+  end
 
-#define a function to delete all fitness classes (the DELETE of CRUD)
-def self.delete_all()
-  sql = "DELETE from fitness_classes"
-  SqlRunner.run(sql)
-end
+  #define a function to delete all fitness classes (the DELETE of CRUD)
+  def self.delete_all()
+    sql = "DELETE from fitness_classes"
+    SqlRunner.run(sql)
+  end
 
-#define a function to delete a specific fitness class (the DELETE of CRUD). Version A
-def delete()
-  sql ="
-  DELETE FROM fitness_classes
-  WHERE id = $1"
-  values = [@id]
-  SqlRunner.run(sql, values)
-end
+  #define a function to delete a specific fitness class (the DELETE of CRUD). Version A
+  def delete()
+    sql ="
+    DELETE FROM fitness_classes
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
 
-#define a function to delete a specific fitness class (the DELETE of CRUD). Version B
-def self.delete_fitness_class_by_id(id)
-  sql = "
-  DELETE FROM fitness_classes
-  WHERE id = $1"
-  values = [id]
-  SqlRunner.run(sql, values)
-end
+  #define a function to delete a specific fitness class (the DELETE of CRUD). Version B
+  def self.delete_fitness_class_by_id(id)
+    sql = "
+    DELETE FROM fitness_classes
+    WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
 
-#for the MVP: the app should show all members that are registered for a particular class. To do this: access the members table via an inner joint with bookings; this should produce a list of attendees, but I will need to map this.
-def attendees()
-  sql = "SELECT members.*
-  FROM members
-  INNER JOIN bookings
-  ON bookings.member_id = members.id
-  WHERE bookings.fitness_class_id = $1"
-  values = [@id]
-  attendee_data = SqlRunner.run(sql, values)
-  attendees = attendee_data.map { |attendee| Member.new(attendee) }
-  return attendees
-end
+  #for the MVP: the app should show all members that are registered for a particular class. To do this: access the members table via an inner joint with bookings; this should produce a list of attendees, but I will need to map this.
+  def attendees()
+    sql = "SELECT members.*
+    FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id
+    WHERE bookings.fitness_class_id = $1"
+    values = [@id]
+    attendee_data = SqlRunner.run(sql, values)
+    attendees = attendee_data.map { |attendee| Member.new(attendee) }
+    return attendees
+  end
 
-def attendee_member_ids()
-  sql = "SELECT members.*
-  FROM members
-  INNER JOIN bookings
-  ON bookings.member_id = members.id
-  WHERE bookings.fitness_class_id = $1"
-  values = [@id]
-  attendee_data = SqlRunner.run(sql, values)
-  attendees = attendee_data.map { |attendee| Member.new(attendee).id }
-  return attendees.sort
-end
+  def attendee_member_ids()
+    sql = "SELECT members.*
+    FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id
+    WHERE bookings.fitness_class_id = $1"
+    values = [@id]
+    attendee_data = SqlRunner.run(sql, values)
+    attendees = attendee_data.map { |attendee| Member.new(attendee).id }
+    return attendees.sort
+  end
 
+  def number_of_attendees()
+    self.attendees.length
+  end
 
-#idea is to have a method that returns all the bookings for a fitness_class. this could be useful when we want to delete a particular booking id.
+  def overbooked?()
+    self.attendees.length >= @capacity ? true : false
+    # return "Sorry, there are no spaces left in this class." if self.attendees.length => @capacity
+  end
 
-#final end
+  #idea is to have a method that returns all the bookings for a fitness_class. this could be useful when we want to delete a particular booking id.
+
+  #final end
 end

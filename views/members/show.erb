@@ -5,10 +5,7 @@
   <li>First Name: <%= @member.last_name %></li>
 </ul>
 
-<!-- would be good as a table -->
 <p>Classes this member has signed up for:</p>
-
-
 
 <table>
   <% @bookings.each do |booking| %>
@@ -29,4 +26,3 @@
 <form action="/members/<%= @member.id %>/edit" method="GET"><input type="submit" value="Edit Member Details"></form>
 <br>
 <form action="/members/<%= @member.id %>/delete" method="POST"><input type="submit" value="Delete"></form>
-<!--  -->

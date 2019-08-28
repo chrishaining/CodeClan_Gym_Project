@@ -19,9 +19,13 @@ post '/bookings' do
   # @fitness_classes = FitnessClass.view_all()
   # return if FitnessClass.new.attendee_member_ids.include?(@member_id)
   # return if params[:member_id] params[:fitness_class_id]
-
+  fitness_class = FitnessClass.view_class_by_id(params[:fitness_class_id])
   if Booking.already_booked?(params[:member_id], params[:fitness_class_id])
     erb( :"bookings/already_booked")
+  elsif
+    fitness_class.overbooked?
+    # Booking.overbooked?(params[:fitness_class_id])
+    erb ( :"bookings/overbooked")
   else
     @booking = Booking.new(params).save
     erb( :"bookings/create")
