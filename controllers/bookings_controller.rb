@@ -40,7 +40,6 @@ get '/bookings/:id' do
   erb( :"/bookings/show")
 end
 
-
 #delete
 post '/bookings/:id/delete' do
   booking = Booking.view_booking_by_id(params[:id])

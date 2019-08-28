@@ -4,6 +4,10 @@ require_relative('../models/fitness_class')
 require_relative('../models/booking')
 require('pry')
 
+Booking.delete_all()
+Member.delete_all()
+FitnessClass.delete_all()
+
 #new instances of the member class
 member1 = Member.new( {'first_name' => 'Tamota', 'last_name' => 'Baku' } )
 member2 = Member.new( {'first_name' => 'Micah', 'last_name' => 'Baku' } )
@@ -17,7 +21,6 @@ member2.save()
 member3.save()
 member4.save()
 member5.save()
-
 
 #instances of the fitnessclass
 fitness_class1 = FitnessClass.new ( { 'name' => 'Pilates', 'datetime' => '2019-08-27 18:00:00', 'capacity' => 5 })

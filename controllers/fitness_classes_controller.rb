@@ -4,7 +4,7 @@ require_relative('../models/fitness_class.rb')
 also_reload('../models/*')
 
 # index
-get '/fitness_classes/index' do
+get '/fitness_classes' do
   # @fitness_classes = FitnessClass.view_all()
   @upcoming_fitness_classes = FitnessClass.view_upcoming_classes
   @archived_fitness_classes = FitnessClass.view_archived_classes
@@ -55,5 +55,5 @@ end
 # delete
 post '/fitness_classes/:id/delete' do
   FitnessClass.delete_fitness_class_by_id(params['id'])
-  redirect to '/fitness_classes/index'
+  redirect to '/fitness_classes'
 end

@@ -1,12 +1,13 @@
 <h2>Members</h2>
 
+<div class="table-container">
 <table>
     <% @members.each do |member| %>
-  <tr>
+  <!-- <tr>
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  </tr> -->
   <tr>
     <td>Member <%= member.id %></td>
     <td><%= member.pretty_name %></td>
@@ -14,3 +15,4 @@
   </tr>
   <% end %>
   </table>
+  </div>
