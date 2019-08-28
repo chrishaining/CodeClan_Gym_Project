@@ -62,6 +62,13 @@ class FitnessClass
     fitness_classes_data = SqlRunner.run(sql)
     result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
     return result
+    # dated_classes = []
+    # for fitness_class in result
+    #   dated = fitness_class.format_date
+    #   dated_classes.push(dated)
+    #   # sorted = result.sort_by { |fitness_class| fitness_class.format_date }
+    #   return dated_classes.sort
+    # end
   end
 
   #function to sort the fitness_classes by datetime.
@@ -155,7 +162,10 @@ class FitnessClass
     values = [@id]
     attendee_data = SqlRunner.run(sql, values)
     attendees = attendee_data.map { |attendee| Member.new(attendee).id }
-    return attendees.sort
+    return attendees
+  end
+
+  def self.sort_alphabetically()
   end
 
   def number_of_attendees()
@@ -166,6 +176,7 @@ class FitnessClass
     self.attendees.length >= @capacity ? true : false
     # return "Sorry, there are no spaces left in this class." if self.attendees.length => @capacity
   end
+
 
   #idea is to have a method that returns all the bookings for a fitness_class. this could be useful when we want to delete a particular booking id.
 
