@@ -6,9 +6,11 @@ also_reload('../models/*')
 # index
 get '/fitness_classes/index' do
   # @fitness_classes = FitnessClass.view_all()
-  @fitness_classes = FitnessClass.view_upcoming_classes
+  @upcoming_fitness_classes = FitnessClass.view_upcoming_classes
+  @archived_fitness_classes = FitnessClass.view_archived_classes
   erb( :"fitness_classes/index")
 end
+
 
 # new
 get '/fitness_classes/new' do

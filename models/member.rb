@@ -34,7 +34,8 @@ class Member
   #define a function to view all members (the READ of CRUD).
 
   def self.view_all()
-    sql = "SELECT * FROM members"
+    sql = "SELECT * FROM members
+    ORDER BY last_name"
     member_data = SqlRunner.run(sql)
     result = member_data.map { |member| Member.new(member) }
     return result

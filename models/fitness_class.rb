@@ -85,6 +85,14 @@ def self.view_upcoming_classes()
   return result
 end
 
+def self.view_archived_classes()
+  sql = "SELECT * FROM fitness_classes
+  WHERE datetime <= CURRENT_TIMESTAMP
+  ORDER BY datetime ASC"
+  fitness_classes_data = SqlRunner.run(sql)
+  result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
+  return result
+end
 
   #function to sort the fitness_classes by datetime.
   # def sort_fitness_classes_by_datetime()
