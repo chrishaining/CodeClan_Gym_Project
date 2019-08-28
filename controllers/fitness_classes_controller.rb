@@ -38,6 +38,7 @@ end
 # # edit
 get '/fitness_classes/:id/edit' do
   @fitness_class = FitnessClass.view_class_by_id(params['id'])
+  # binding.pry
   erb(:"fitness_classes/edit")
 end
 # #

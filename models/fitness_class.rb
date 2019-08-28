@@ -11,6 +11,7 @@ class FitnessClass
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
+    # @datetime = DateTime.parse(options['datetime'])
     @datetime = options['datetime']
     @capacity = options['capacity'].to_i
     # @enrolled = options['enrolled'].to_i
@@ -30,6 +31,11 @@ class FitnessClass
   def format_time
     datetime_obj = DateTime.parse(@datetime)
     datetime_obj.strftime('%H:%M')
+  end
+
+  def format_date_for_browser
+    datetime_parts = @datetime.split(" ")
+    datetime_parts[0] + "T" + datetime_parts[1]
   end
 
 
