@@ -6,17 +6,10 @@
 <p>Capacity: <%= @fitness_class.capacity %></p>
 <p>Number of members signed up: <%= @fitness_class.attendees.length %></p>
 
-
-
-
 <p>Class attendees: </p>
 
   <table>
     <% @attendees.each do |attendee| %>
-        <tr>
-          <th></th>
-          <th></th>
-        </tr>
         <tr>
           <td><%= attendee.pretty_name %></td>
 <td><a href="/members/<%= attendee.id %>">  Show member details</a></td>

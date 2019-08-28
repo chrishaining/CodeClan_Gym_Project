@@ -41,13 +41,6 @@ class Member
     return result
   end
 
-
-  #was going to create a helper method to use to map items
-  # def self.map_items(member_data)
-  #   result = member_data.map { |member| Member.new(member) }
-  #   return result
-  # end
-
   #define a function to view a specific member/set of members (the READ of CRUD). This is version A
   def self.view_member_by_id(id)
     sql = "

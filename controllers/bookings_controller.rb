@@ -13,12 +13,8 @@ get '/bookings/new' do
   erb( :"bookings/new")
 end
 
-# # create
+# create
 post '/bookings' do
-  # @members = Member.view_all()
-  # @fitness_classes = FitnessClass.view_all()
-  # return if FitnessClass.new.attendee_member_ids.include?(@member_id)
-  # return if params[:member_id] params[:fitness_class_id]
   fitness_class = FitnessClass.view_class_by_id(params[:fitness_class_id])
   if Booking.already_booked?(params[:member_id], params[:fitness_class_id])
     erb( :"bookings/already_booked")

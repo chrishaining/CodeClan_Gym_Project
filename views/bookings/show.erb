@@ -1,18 +1,16 @@
+<div>
 <h2>Booking details</h2>
-<ul>
-  <li>Booking ID: <%= @booking.id %></li>
-  <li>Member: <%= @member.pretty_name %></li>
-  <li>Class: <%= @fitness_class.name %></li>
-  <li>Date: <%= @fitness_class.format_date %></li>
-  <li>Time: <%= @fitness_class.format_time %></li>
-</ul>
 
+  <p>Booking ID: <%= @booking.id %></p>
+  <p>Member: <%= @member.pretty_name %></p>
+  <p>Class: <%= @fitness_class.name %></p>
+  <p>Date: <%= @fitness_class.format_date %></p>
+  <p>Time: <%= @fitness_class.format_time %></p>
+
+
+</div>
+<div>
 <a href="/members/<%= @member.id %>">Return to the member details</a>
-<hr>
+
 <form action="/bookings/<%= @booking.id %>/delete" method="POST"><input type="submit" value="Delete this booking"/></form>
-
-
-<!-- I don't understand why booking.name is. But it works, as it shows the name of the relevant fitness_class. -->
-
-
-<!--  -->
+</div>

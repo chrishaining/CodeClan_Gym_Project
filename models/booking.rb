@@ -25,20 +25,6 @@ def save()
   @id = booking['id'].to_i
 end
 
-# def attendees()
-#   sql = "SELECT members.*
-#   FROM members
-#   INNER JOIN bookings
-#   ON bookings.member_id = members.id
-#   WHERE bookings.fitness_class_id = $1"
-#   values = [@id]
-#   attendee_data = SqlRunner.run(sql, values)
-#   attendees = attendee_data.map { |attendee| Member.new(attendee) }
-#   return attendees
-# end
-
-
-
 # method to stop a person booking into the same fitness_class multiple times. first, we want to check whether that person (id) is in attendees. if yes, return. so, it should go in the booking class (save method). return if @member_id is in fitness_class.attendees
 
 
@@ -78,7 +64,6 @@ def view_member()
  values = [@member_id]
  member = SqlRunner.run(sql, values)
  result = Member.new(member.first)
- # result = member.map { |member| Member.new(member).pretty_name}
  return result
 end
 
@@ -90,16 +75,8 @@ def view_fitness_class()
  values = [@fitness_class_id]
  fitness_class = SqlRunner.run(sql, values)
  result = FitnessClass.new(fitness_class.first)
- # result = member.map { |member| Member.new(member).pretty_name}
  return result
 end
-
-
-
-#show the name of the fitness_class for the specific booking. the READ of CRUD)
-# def show_fitness_class_name()
-#
-# end
 
 #define a function to update a booking (the UPDATE of CRUD)
 def update()
@@ -136,15 +113,6 @@ def self.delete_booking_by_id(id)
   SqlRunner.run(sql, values)
 end
 
-#method to delete a booking using the member's ID as the argument. Call it on an instance of the class. Also, there may be a possibility to delete all the bookings a particular member has (e.g. because they are off sick, and it would be easier to delete all their classes together)
-# def self.delete_by_member_id(member_id)
-#   sql = "
-#   DELETE FROM bookings
-#   WHERE member_id = $1"
-#   values = [member_id]
-#   SqlRunner.run(sql, values)
-# end
-
 def self.already_booked?(member_id, fitness_class_id)
   sql = "
   SELECT * FROM bookings
@@ -154,21 +122,6 @@ def self.already_booked?(member_id, fitness_class_id)
   no_booking = SqlRunner.run(sql, values).first.nil?
   return !no_booking
 end
-# self.search_member_id_and_fitness_class_id
-
-# def self.overbooked?(fitness_class_id)
-#   sql = "
-#   SELECT * FROM fitness_classes
-#   WHERE id = $1
-#   "
-#   values = [fitness_class_id]
-#   SqlRunner.run(sql, values)
-#
-#   # result = FitnessClass.new(fitness_class.first)
-#   # fitness_class.attendees.length >= @capacity ? true : false
-#   # return "Sorry, there are no spaces left in this class." if self.attendees.length => @capacity
-# end
-
 
 #Final end
 end

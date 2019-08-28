@@ -11,15 +11,8 @@ class FitnessClass
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
-    # @datetime = DateTime.parse(options['datetime'])
     @datetime = options['datetime']
     @capacity = options['capacity'].to_i
-    # @enrolled = options['enrolled'].to_i
-
-    # datetime_obj = DateTime.parse(@datetime)
-    #
-    # datetime_obj.strftime('%m/%d/%Y')
-
   end
 
 
@@ -37,7 +30,6 @@ class FitnessClass
     datetime_parts = @datetime.split(" ")
     datetime_parts[0] + "T" + datetime_parts[1]
   end
-
 
   #define a function to create a new fitness class (the CREATE of CRUD)
   def save()
@@ -61,21 +53,6 @@ class FitnessClass
     return result
   end
 
-  #to view only upcoming classes (it only works to date level - if something has happened today, it still shows)
-  # def self.view_upcoming_classes()
-  #   sql = "SELECT * FROM fitness_classes
-  #   WHERE datetime >= CURRENT_DATE"
-  #   fitness_classes_data = SqlRunner.run(sql)
-  #   result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
-  #   return result
-  # end
-    # dated_classes = []
-    # for fitness_class in result
-    #   dated = fitness_class.format_date
-    #   dated_classes.push(dated)
-    #   # sorted = result.sort_by { |fitness_class| fitness_class.format_date }
-    #   return dated_classes.sort
-    # end
 def self.view_upcoming_classes()
   sql = "SELECT * FROM fitness_classes
   WHERE datetime >= CURRENT_TIMESTAMP
@@ -93,22 +70,6 @@ def self.view_archived_classes()
   result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
   return result
 end
-
-  #function to sort the fitness_classes by datetime.
-  # def sort_fitness_classes_by_datetime()
-  #   self.view_upcoming_classes()
-  #   result.sort_by
-  #
-  # end
-
-  #An attempt to view future classes using Ruby. It's not working - ArgumentError - comparison of string with time failed.
-  # def self.view_future_classes
-  #   all = self.view_all()
-  #   all.each do |fitness_class|
-  #     future_classes.push(fitness_class) if fitness_class.format_time >= Time.now && fitness_class.format_date >= Date.now
-  #   end
-
-  # end
 
   #define a function to view a specific fitness class/set of fitness classes (the READ of CRUD).Version A
   def self.view_class_by_id(id)
@@ -197,11 +158,9 @@ end
 
   def overbooked?()
     self.attendees.length >= @capacity ? true : false
-    # return "Sorry, there are no spaces left in this class." if self.attendees.length => @capacity
   end
 
 
-  #idea is to have a method that returns all the bookings for a fitness_class. this could be useful when we want to delete a particular booking id.
 
   #final end
 end

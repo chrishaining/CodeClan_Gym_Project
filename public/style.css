@@ -1,14 +1,11 @@
 body {
   padding: 30px;
   font-family: 'Futura Book', sans-serif;
-
   background-color: #3AAFA9;
-  /* background-image: url("/images/pilates"); */
 }
 
 a {
   color: #374785;
-  /* color: #17252A; */
 }
 
 a:hover {
@@ -16,10 +13,8 @@ a:hover {
 }
 
 #menu {
-  /* width: 220px; */
   display: flex;
   align-content: space-between;
-  /* margin: 0 auto; */
 }
 
 #menu a {
@@ -40,21 +35,7 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-  /* align-content: stretch; */
 }
-
-/* table {
-
-} */
-
-/* th {
-  background-color: #6495ed; */
-
-
-/* td, th {
-  border: 2px outset black;
-  padding: 5px;
-} */
 
 .table-container {
 display: flex;
@@ -70,103 +51,10 @@ tr:nth-child(odd) {
   background-color: #DEF2F1;
 }
 
-
-/* #leftbox {
-  float:left;
-}
-
-}
-#rightbox{
-  float:right; */
-
-  /* .home {
-  background-image: url('/images/yoga.jpg');
-  } */
-  /* add to indexes */
-  /* #student-wrapper {
-  margin-left: 300px;
-}
-.student {
-border: 5px double;
-margin: 0 35px 30px 0;
-padding: 25px;
-width: 200px;
-display: inline-block;
-} */
-
-/* .form-el {
-margin: 10px 0;
-} */
-
-/* .form-wrapper .form-el input[type="submit" i] {
-margin-left: 180px;
-} */
-
-/* .form-wrapper .form-el label {
-text-align: right;
-display: inline-block;
-vertical-align: middle;
-width: 160px;
-margin: 0 1em 0 0;
-} */
-
-
-/* fsfsdfsfsdfsdfsd */
-/*
-head {
-background-color: #3AAFA9;
-color: #17252A;
-}
-
-body {
-background-color: #3AAFA9;
-/* background-image: url('./images/barbell.jpg'); */ */
-/* color: #17252A;
-}
-.photos {
-opacity: 0.5;
-}
-
-img {
-display: inline-block;
-box-sizing: content-box;
-opacity: 0.6;
-padding-left: 0px;
-padding-right: 10px;
-float: left;
-}
-
-#logo {
-
-}
-
-table {
-background-color: #DEF2F1;
-
-
-}
-#menu a:hover {
-color: #FEFFFF;
-}
 ul {
 color: #17252A;
 list-style-type: none;
 margin: 0;
 padding: 0;
 position: absolute;
-} */
-
-/* li {
-display: inline-block;
-float: left;
-margin-right: 1px; */
-
 }
-
-
-
-/*
-
-text is black (#17252A) and white (#FEFFFF)
-background is a green (#3AAFA9)
-additional shades #DEF2F1 and #2B7A78 */ */

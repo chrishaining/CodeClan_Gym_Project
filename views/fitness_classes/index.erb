@@ -3,11 +3,6 @@
 <div class="table-container">
 <table>
   <% @upcoming_fitness_classes.each do |fitness_class| %>
-  <!-- <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr> -->
   <tr>
     <td>Class <%= fitness_class.id %></td>
     <td><%= fitness_class.name %></td>
@@ -16,17 +11,12 @@
   <% end %>
 </table>
 </div>
-<!-- <hr> -->
+<hr>
 <h2>Archived Classes</h2>
 
 <div class="table-container">
 <table id="rightbox">
   <% @archived_fitness_classes.each do |fitness_class| %>
-  <!-- <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr> -->
   <tr>
     <td>Class <%= fitness_class.id %></td>
     <td><%= fitness_class.name %></td>
