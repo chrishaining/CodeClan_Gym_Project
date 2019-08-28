@@ -5,7 +5,7 @@ require 'time'
 
 class FitnessClass
 
-  attr_accessor :name, :datetime, :capacity #, :enrolled
+  attr_accessor :name, :datetime, :capacity 
   attr_reader :id
 
   def initialize(options)
