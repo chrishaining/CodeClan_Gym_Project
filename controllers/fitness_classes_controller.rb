@@ -54,5 +54,5 @@ end
 # delete
 post '/fitness_classes/:id/delete' do
   FitnessClass.delete_fitness_class_by_id(params['id'])
-  redirect to '/fitness_classes'
+  erb( :"fitness_classes/delete")
 end

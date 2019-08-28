@@ -41,5 +41,5 @@ post '/bookings/:id/delete' do
   booking = Booking.view_booking_by_id(params[:id])
   member = booking.view_member()
   Booking.delete_booking_by_id(params[:id])
-  redirect to '/members/index'
+  erb ( :"bookings/delete")
 end

@@ -19,7 +19,7 @@ end
 # # create
 post '/members' do
   Member.new(params).save
-  redirect to '/members'
+  erb (:"members/create")
 end
 
 # show all members - not needed, as members/index does this
@@ -52,5 +52,5 @@ end
 # delete
 post '/members/:id/delete' do
   Member.delete_member_by_id(params[:id])
-  redirect to '/members'
+  erb( :"members/delete")
 end
