@@ -149,9 +149,6 @@ end
     return attendees
   end
 
-  def self.sort_alphabetically()
-  end
-
   def number_of_attendees()
     self.attendees.length
   end
