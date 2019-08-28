@@ -20,7 +20,6 @@ end
 # # create
 post '/fitness_classes' do
   @fitness_class = FitnessClass.new(params).save
-  # @fitness_class.datetime = '#{params[:date]} + #{params[:time]}'
   erb( :"fitness_classes/create")
 end
 
@@ -40,7 +39,6 @@ end
 # edit
 get '/fitness_classes/:id/edit' do
   @fitness_class = FitnessClass.view_class_by_id(params['id'])
-  # binding.pry
   erb(:"fitness_classes/edit")
 end
 

@@ -1,13 +1,13 @@
 <h2>Members</h2>
 
 <div class="table-container">
-<table>
+  <table>
     <% @members.each do |member| %>
-  <tr>
-    <td>Member <%= member.id %></td>
-    <td><%= member.pretty_name %></td>
-    <td><a href="/members/<%= member.id %>">View details</a></td>
-  </tr>
-  <% end %>
+    <tr>
+      <td>Member <%= member.id %></td>
+      <td><%= member.pretty_name %></td>
+      <td><a href="/members/<%= member.id %>">View details</a></td>
+    </tr>
+    <% end %>
   </table>
-  </div>
+</div>

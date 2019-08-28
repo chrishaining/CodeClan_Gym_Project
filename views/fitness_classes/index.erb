@@ -1,27 +1,27 @@
 <h2>Upcoming Classes</h2>
 
 <div class="table-container">
-<table>
-  <% @upcoming_fitness_classes.each do |fitness_class| %>
-  <tr>
-    <td>Class <%= fitness_class.id %></td>
-    <td><%= fitness_class.name %></td>
-    <td><a href="/fitness_classes/<%= fitness_class.id %>">View details</a></td>
-  </tr>
-  <% end %>
-</table>
+  <table>
+    <% @upcoming_fitness_classes.each do |fitness_class| %>
+    <tr>
+      <td>Class <%= fitness_class.id %></td>
+      <td><%= fitness_class.name %></td>
+      <td><a href="/fitness_classes/<%= fitness_class.id %>">View details</a></td>
+    </tr>
+    <% end %>
+  </table>
 </div>
 <hr>
 <h2>Archived Classes</h2>
 
 <div class="table-container">
-<table id="rightbox">
-  <% @archived_fitness_classes.each do |fitness_class| %>
-  <tr>
-    <td>Class <%= fitness_class.id %></td>
-    <td><%= fitness_class.name %></td>
-    <td><a href="/fitness_classes/<%= fitness_class.id %>">View details</a></td>
-  </tr>
-  <% end %>
-</table>
+  <table id="rightbox">
+    <% @archived_fitness_classes.each do |fitness_class| %>
+    <tr>
+      <td>Class <%= fitness_class.id %></td>
+      <td><%= fitness_class.name %></td>
+      <td><a href="/fitness_classes/<%= fitness_class.id %>">View details</a></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

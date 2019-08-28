@@ -20,7 +20,6 @@ post '/bookings' do
     erb( :"bookings/already_booked")
   elsif
     fitness_class.overbooked?
-    # Booking.overbooked?(params[:fitness_class_id])
     erb ( :"bookings/overbooked")
   else
     @booking = Booking.new(params).save

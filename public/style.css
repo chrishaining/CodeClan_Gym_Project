@@ -38,9 +38,9 @@ img {
 }
 
 .table-container {
-display: flex;
-flex: 0 1 auto;
-align-content: flex-start | flex-end;
+  display: flex;
+  flex: 0 1 auto;
+  align-content: flex-start | flex-end;
 }
 
 tr:nth-child(even) {
@@ -52,9 +52,9 @@ tr:nth-child(odd) {
 }
 
 ul {
-color: #17252A;
-list-style-type: none;
-margin: 0;
-padding: 0;
-position: absolute;
+  color: #17252A;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
 }

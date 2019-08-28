@@ -53,23 +53,23 @@ class FitnessClass
     return result
   end
 
-def self.view_upcoming_classes()
-  sql = "SELECT * FROM fitness_classes
-  WHERE datetime >= CURRENT_TIMESTAMP
-  ORDER BY datetime ASC"
-  fitness_classes_data = SqlRunner.run(sql)
-  result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
-  return result
-end
+  def self.view_upcoming_classes()
+    sql = "SELECT * FROM fitness_classes
+    WHERE datetime >= CURRENT_TIMESTAMP
+    ORDER BY datetime ASC"
+    fitness_classes_data = SqlRunner.run(sql)
+    result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
+    return result
+  end
 
-def self.view_archived_classes()
-  sql = "SELECT * FROM fitness_classes
-  WHERE datetime <= CURRENT_TIMESTAMP
-  ORDER BY datetime ASC"
-  fitness_classes_data = SqlRunner.run(sql)
-  result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
-  return result
-end
+  def self.view_archived_classes()
+    sql = "SELECT * FROM fitness_classes
+    WHERE datetime <= CURRENT_TIMESTAMP
+    ORDER BY datetime ASC"
+    fitness_classes_data = SqlRunner.run(sql)
+    result = fitness_classes_data.map { |fitness_class| FitnessClass.new(fitness_class) }
+    return result
+  end
 
   #define a function to view a specific fitness class/set of fitness classes (the READ of CRUD).Version A
   def self.view_class_by_id(id)
@@ -93,10 +93,10 @@ end
   def update()
     sql ="
     UPDATE fitness_classes
-    SET name = $1, datetime = $2
-    WHERE id = $3
+    SET name = $1, datetime = $2, capacity = $3
+    WHERE id = $4
     "
-    values = [@name, @datetime, @id]
+    values = [@name, @datetime, @capacity, @id]
     SqlRunner.run(sql, values)
   end
 

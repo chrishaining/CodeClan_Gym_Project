@@ -8,18 +8,18 @@
 
 <p>Class attendees: </p>
 
-  <table>
-    <% @attendees.each do |attendee| %>
-        <tr>
-          <td><%= attendee.pretty_name %></td>
-<td><a href="/members/<%= attendee.id %>">  Show member details</a></td>
-        </tr>
-        <% end %>
-      </table>
+<table>
+  <% @attendees.each do |attendee| %>
+  <tr>
+    <td><%= attendee.pretty_name %></td>
+    <td><a href="/members/<%= attendee.id %>">  Show member details</a></td>
+  </tr>
+  <% end %>
+</table>
 
-  <hr>
+<hr>
 
 <form action="/fitness_classes/<%= @fitness_class.id %>/edit" method="GET"><input type="submit" value="Edit Class Details"></form>
 
-  <br>
-  <form action="/fitness_classes/<%= @fitness_class.id %>/delete" method="POST"><input type="submit" value="Delete this class"></form>
+<br>
+<form action="/fitness_classes/<%= @fitness_class.id %>/delete" method="POST"><input type="submit" value="Delete this class"></form>
