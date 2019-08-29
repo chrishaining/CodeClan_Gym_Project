@@ -9,7 +9,7 @@ also_reload('../models/*')
 #new
 get '/bookings/new' do
   @members = Member.view_all()
-  @fitness_classes = FitnessClass.view_all()
+  @fitness_classes = FitnessClass.view_upcoming_classes()
   erb( :"bookings/new")
 end
 

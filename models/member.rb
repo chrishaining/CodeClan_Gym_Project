@@ -14,7 +14,7 @@ class Member
 
   #It would help to have the member name displayed as first_name last_name in the page that displays an individual member's details, possibly also on the class/booking pages.
   def pretty_name()
-    return "#{@first_name} #{@last_name}"
+    return "#{@first_name} #{@last_name.upcase}"
   end
 
   #define a function to create a new member (the CREATE of CRUD)

@@ -23,12 +23,12 @@ member4.save()
 member5.save()
 
 #instances of the fitnessclass
-fitness_class1 = FitnessClass.new ( { 'name' => 'Pilates', 'datetime' => '2019-08-27 18:00:00', 'capacity' => 5 })
-fitness_class2 = FitnessClass.new ( { 'name' => 'Yoga', 'datetime' => '2019-08-28 18:00:00', 'capacity' => 5 })
+fitness_class1 = FitnessClass.new ( { 'name' => 'Pilates', 'datetime' => '2019-08-30 18:00:00', 'capacity' => 5 })
+fitness_class2 = FitnessClass.new ( { 'name' => 'Yoga', 'datetime' => '2019-08-29 18:00:00', 'capacity' => 5 })
 fitness_class3 = FitnessClass.new ( { 'name' => 'Killer Kardio', 'datetime' => '2019-08-29 14:00:00', 'capacity' => 10 })
 fitness_class4 = FitnessClass.new ( { 'name' => 'Codercise', 'datetime' => '2019-08-29 17:00:00', 'capacity' => 1 })
 fitness_class5 = FitnessClass.new ( { 'name' => 'Powerpump', 'datetime' => '2019-08-28 08:00:00', 'capacity' => 5 })
-fitness_class6 = FitnessClass.new ( { 'name' => 'Cartwheels', 'datetime' => '2019-05-27 17:00:00', 'capacity' => 4 })
+fitness_class6 = FitnessClass.new ( { 'name' => 'Jumping Around', 'datetime' => '2019-05-27 17:00:00', 'capacity' => 4 })
 
 #creating instances of the fitnessclass (save method)
 fitness_class1.save()
