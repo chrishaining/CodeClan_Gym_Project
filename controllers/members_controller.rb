@@ -22,7 +22,7 @@ post '/members' do
   erb (:"members/create")
 end
 
-# show all members - not needed, as members/index does this
+# show all members 
 get '/members' do
   @members = Member.view_all
   erb(:"members")

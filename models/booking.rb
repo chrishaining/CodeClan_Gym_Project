@@ -25,9 +25,6 @@ class Booking
     @id = booking['id'].to_i
   end
 
-  # method to stop a person booking into the same fitness_class multiple times. first, we want to check whether that person (id) is in attendees. if yes, return. so, it should go in the booking class (save method). return if @member_id is in fitness_class.attendees
-
-
   #define a function to view all bookings (the READ of CRUD)
   def self.view_all()
     sql = "SELECT * FROM bookings"
@@ -113,6 +110,7 @@ class Booking
     SqlRunner.run(sql, values)
   end
 
+  # method to stop a member being booked into the same fitness_class multiple times. It will be called on the Booking class. First, we want to check whether that member is in the list of attendees for a particular class, so it will need to take the member_id and the fitness_class_id.  An sql query will be run to select any items in the database that have the member_id and fitness_class_id. If the result of that query is not nil, then return. 
   def self.already_booked?(member_id, fitness_class_id)
     sql = "
     SELECT * FROM bookings
