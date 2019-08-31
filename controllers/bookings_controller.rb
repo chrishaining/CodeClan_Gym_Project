@@ -10,10 +10,14 @@ also_reload('../models/*')
 get '/bookings/new' do
   @members = Member.view_all()
   @fitness_classes = FitnessClass.view_upcoming_classes()
-  erb( :"bookings/new")
+  if @fitness_classes == []
+    erb( :"bookings/no_upcoming_classes")
+  else
+    erb( :"bookings/new")
+  end
 end
 
-# create - 
+# create -
 post '/bookings' do
   fitness_class = FitnessClass.view_class_by_id(params[:fitness_class_id])
   if Booking.already_booked?(params[:member_id], params[:fitness_class_id])
@@ -21,6 +25,9 @@ post '/bookings' do
   elsif
     fitness_class.overbooked?
     erb ( :"bookings/overbooked")
+    # elsif
+    #   FitnessClass.view_upcoming_classes() == nil
+    #   redirect 'fitness_classes'
   else
     @booking = Booking.new(params).save
     erb( :"bookings/create")
