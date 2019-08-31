@@ -7,13 +7,17 @@
       <th>Time</th>
       <th>Class Name</th>
       <th>Class ID</th>
+      <th>Number of spaces left</th>
+
       </tr>
     <% @upcoming_fitness_classes.each do |fitness_class| %>
     <tr>
       <td><%= fitness_class.format_date %></td>
       <td><%= fitness_class.format_time %></td>
       <td><%= fitness_class.name %></td>
-      <td>Class <%= fitness_class.id %></td>
+      <td><%= fitness_class.id %></td>
+      <td><%= fitness_class.number_of_free_spaces %></td>
+
       <td><a href="/fitness_classes/<%= fitness_class.id %>">View details</a></td>
     </tr>
     <% end %>
@@ -29,6 +33,8 @@
       <th>Time</th>
       <th>Class Name</th>
       <th>Class ID</th>
+      <th>Number of Bookings</th>
+
       </tr>
 
     <% @archived_fitness_classes.each do |fitness_class| %>
@@ -36,7 +42,9 @@
       <td><%= fitness_class.format_date %></td>
       <td><%= fitness_class.format_time %></td>
       <td><%= fitness_class.name %></td>
-      <td>Class <%= fitness_class.id %></td>
+      <td><%= fitness_class.id %></td>
+      <td><%= fitness_class.number_of_attendees %></td>
+
       <td><a href="/fitness_classes/<%= fitness_class.id %>">View details</a></td>
     </tr>
     <% end %>

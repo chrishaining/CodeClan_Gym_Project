@@ -5,7 +5,7 @@ require 'time'
 
 class FitnessClass
 
-  attr_accessor :name, :datetime, :capacity 
+  attr_accessor :name, :datetime, :capacity
   attr_reader :id
 
   def initialize(options)
@@ -153,10 +153,22 @@ class FitnessClass
     self.attendees.length
   end
 
+  def number_of_free_spaces()
+    @capacity - self.number_of_attendees()
+  end
+
   def overbooked?()
     self.attendees.length >= @capacity ? true : false
   end
 
+  def view_booking_ids()
+    sql = "SELECT * FROM bookings
+    WHERE bookings.fitness_class_id = $1"
+    values = [@id]
+    bookings = SqlRunner.run(sql, values)
+    result = bookings.map { |booking| Booking.new(booking).id }
+    return result
+  end
 
 
   #final end

@@ -109,6 +109,16 @@ class Member
     SqlRunner.run(sql, values)
   end
 
+  def view_booking_ids()
+    sql = "SELECT * FROM bookings
+    WHERE bookings.member_id = $1"
+    values = [@id]
+    bookings = SqlRunner.run(sql, values)
+    result = bookings.map { |booking| Booking.new(booking).id }
+    return result
+  end
+
+
   #The app should allow the gym to add members to specific classes. This function could plausibly be run on a member or a fitness_class. It would depend on whether a user starts with the fitness_class or starts with the member details. It may be possible to have both routes. For the starts-with-member route, we need to call a function on the member, using the fitness_class as the argument. The ids from the member and the fitness_class can be used to create a new instance of the booking class.
 
   def make_booking(fitness_class)

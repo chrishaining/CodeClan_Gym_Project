@@ -10,11 +10,12 @@
 
 <table>
   <% @attendees.each do |attendee| %>
+
   <tr>
     <td><%= attendee.pretty_name %></td>
-    <td><a href="/members/<%= attendee.id %>">  Show member details</a></td>
+    <td><a href="/members/<%= attendee.id %>"> Show member details</a></td>
   </tr>
-  <% end %>
+    <% end %>
 </table>
 
 <hr>
