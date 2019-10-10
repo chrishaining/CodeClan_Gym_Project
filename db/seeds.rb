@@ -61,8 +61,3 @@ booking3.save()
 booking4.save()
 booking5.save()
 booking6.save()
-
-
-
-binding.pry
-nil
